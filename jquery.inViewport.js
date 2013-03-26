@@ -38,10 +38,10 @@
 			
 			// Create an object and add it to the elements array.
 			elObject = {
-				'element': 			this,
-				'elTop': 			elTop,
-				'elLeft': 			elLeft,
-				'elRight': 			elRight,
+				'element': 		this,
+				'elTop': 		elTop,
+				'elLeft': 		elLeft,
+				'elRight': 		elRight,
 				'elBottom': 		elBottom,
 				'inFunction': 		inFunction,
 				'outFunction': 		outFunction,
