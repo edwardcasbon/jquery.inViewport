@@ -1,10 +1,10 @@
 inViewport
 ==========
 
-jQuery plugin for the detection of HTML elements within the browser viewport.
+A jQuery plugin for the detection of HTML elements within the browser viewport.
 
-Usage:
-
+Example usage:
+<pre><code>
 $("#elementID").inViewport(function(){
   // Callback for when the element appears in the viewport.
   $(this).html("I'm in the viewport");
@@ -12,3 +12,4 @@ $("#elementID").inViewport(function(){
   // Callback for when the element disappears from the viewport.
   $(this).html("I've disappeared from the viewport");
 });
+</code></pre>
