@@ -3,8 +3,8 @@
 * Author: Edward Casbon
 * Email: edward@edwardcasbon.co.uk
 * URL: http://www.edwardcasbon.co.uk
-* Version: 1.1
-* Date: 9th April 2014
+* Version: 1.2
+* Date: 20th June 2014
 *
 * Example usage:
 * $("#elementID").inViewport(function(){
@@ -26,8 +26,13 @@
 		// Loop through all the elements selected.
 		return this.each(function(){
 			
-			// Add the element to the elements array.
-			inViewportElements.push(this);
+			// Add the element, with in and out functions to the elements array.
+			var el = {
+				element: this,
+				inFunction: inFunction,
+				outFunction: outFunction
+			};
+			inViewportElements.push(el);
 			
 			// Do the check to see if any of the elements are in the viewport.
 			doCheck = function() {
@@ -42,7 +47,7 @@
 				for(var i=0; i<inViewportElements.length; i++) {
 					
 					// Calculate the elements measurements.
-					var element 	= inViewportElements[i],
+					var element 	= inViewportElements[i].element,
 						$element 	= $(element),
 						elTop 		= $element.offset().top,
 						elLeft 		= $element.offset().left,
@@ -61,7 +66,7 @@
 							// If not already in the viewport, then update the status...
 							$element.attr('data-vpStatus', "in");
 							// .. and fire the callback.
-							if(typeof(inFunction) == "function") inFunction.call(element);
+							if(typeof(inViewportElements[i].inFunction) == "function") inViewportElements[i].inFunction.call(element);
 						}
 					} else {
 						// Not in viewport.
@@ -69,7 +74,7 @@
 							// If not already out of the viewport, then update the status...
 							$element.attr('data-vpStatus', "out");
 							// .. and fire the callback.
-							if(typeof(outFunction) == "function") outFunction.call(element);
+							if(typeof(inViewportElements[i].outFunction) == "function") inViewportElements[i].outFunction.call(element);
 						}
 					}
 				}
